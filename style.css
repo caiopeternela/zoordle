@@ -19,6 +19,11 @@ header > h1 {
     color: #f0f0f1;
 }
 
+#confetti-canvas {
+    position:absolute;
+    top:0;
+}
+
 #ajuda {
     font-size: 34px;
     background: none;
@@ -98,24 +103,6 @@ header > h1 {
     margin: 160px auto;
 }
 
-.errado {
-    background: #E04D38;
-    color:  #e6e6e7;
-    border-color: #333333;
-}
-
-.meio-certo {
-    background: #9b8638;
-    color: #e6e6e7;
-    border-color: #333333;
-}
-
-.certo {
-    background: #669900;
-    color: #e6e6e7;
-    border-color: #333333;
-}
-
 .vazio {
     border: 1px solid black;
 }
@@ -158,6 +145,24 @@ button:hover {
     border-radius: 4px;
     background-color: #333333;
     color:  #e6e6e7;
+}
+
+.errado {
+    background: #E04D38;
+    color:  #e6e6e7;
+    border-color: #333333;
+}
+
+.meio-certo {
+    background: #ceaa29;
+    color: #e6e6e7;
+    border-color: #333333;
+}
+
+.certo {
+    background: #669900;
+    color: #e6e6e7;
+    border-color: #333333;
 }
 
 .btn-especial {

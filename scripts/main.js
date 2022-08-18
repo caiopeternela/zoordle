@@ -1,3 +1,5 @@
+import("./confetti.js")
+
 const objetoPalavraDoDia = {
     '2022/8/17': ['aguia', 'uma ave'], '2022/8/18': ['arara', 'uma ave'], '2022/8/19': ['bagre', 'um peixe',],
     '2022/8/20': ['cobra', 'um réptil'],'2022/8/21': ['porco', 'um mamífero'],'2022/8/22': ['carpa', 'um peixe'],
@@ -5,7 +7,9 @@ const objetoPalavraDoDia = {
     '2022/8/26': ['urubu', 'uma ave'],'2022/8/27': ['zebra', 'um mamífero'],'2022/8/28': ['vespa', 'um inseto'],
     '2022/8/29': ['coala', 'um mamífero'],'2022/8/30': ['cupim', 'um inseto'],'2022/8/31': ['panda', 'um mamífero'],
     '2022/9/1': ['polvo', 'um molusco'],'2022/9/2': ['lhama', 'um mamífero'], '2022/9/3': ['tigre', 'um mamífero'],
-    '2022/9/4': ['truta', 'um peixe'], '2022/9/5': ['pombo', 'uma ave'], '2022/9/6': ['corvo', 'uma ave']
+    '2022/9/4': ['truta', 'um peixe'], '2022/9/5': ['pombo', 'uma ave'], '2022/9/6': ['corvo', 'uma ave'], 
+    '2022/9/7': ['burro', 'um mamífero'], '2022/9/8': ['cabra', 'um mamífero'], '2022/9/9': ['pavao', 'uma ave'],
+    '2022/9/10': ['morsa', 'um mamífero'], '2022/9/11': ['coral', 'um cnidário'], '2022/9/12': ['cacao', 'um peixe']
 }
 
 data = new Date()
@@ -190,44 +194,12 @@ function validaPalavra() {
                     teclado[tecla].classList.remove("outros")
                 }
             }
-            // if (palavra.join("").toLowerCase() == palavraDoDia) {
-            //     linha1[letra].classList.add("certo")
-            //     linha1[letra].classList.remove("vazio")
-            //     if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
-            //         teclado[tecla].classList.add("certo")
-            //         teclado[tecla].classList.remove("outros")
-            //     }
-            // }
-            // if (palavraCertaLista.includes(palavra[letra]) && letraRepete(palavra[letra]) == false &&
-            // letrasVerdes.includes(palavra[letra]) == false || letraRepete(palavra[letra]) && letrasVerdes.includes(palavra[letra]) == false) {
-            //     linha1[letra].classList.add("certo")
-            //     linha1[letra].classList.remove("vazio")
-            //     if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
-            //         teclado[tecla].classList.add("certo")
-            //         teclado[tecla].classList.remove("outros")
-            //     }
-            //     letrasVerdes.push(palavra[letra])
-            // } else {
-            //     linha1[letra].classList.add("errado")
-            //     linha1[letra].classList.remove("vazio")
-            //     if (linha1[letra].classList.contains("certo")) {
-            //         if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
-            //             teclado[tecla].classList.add("certo")
-            //             teclado[tecla].classList.remove("outros")
-            //         }
-            //     } else {
-            //         if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
-            //             teclado[tecla].classList.add("errado")
-            //             teclado[tecla].classList.remove("outros")
-            //         }
-            //         letrasCinzas.push(palavra[letra])
-            //     }
-            // }
         }
     }
 
     if (palavraDoDia == stringPalavra) {
         linha1 = ""
+        startConfetti();
     } else {
         if (contadorLinhas == 1) {
             linha1 = linha2
