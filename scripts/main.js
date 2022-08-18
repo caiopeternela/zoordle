@@ -5,7 +5,7 @@ const objetoPalavraDoDia = {
     '2022/8/26': ['urubu', 'uma ave'],'2022/8/27': ['zebra', 'um mamífero'],'2022/8/28': ['vespa', 'um inseto'],
     '2022/8/29': ['coala', 'um mamífero'],'2022/8/30': ['cupim', 'um inseto'],'2022/8/31': ['panda', 'um mamífero'],
     '2022/9/1': ['polvo', 'um molusco'],'2022/9/2': ['lhama', 'um mamífero'], '2022/9/3': ['tigre', 'um mamífero'],
-    '2022/9/4': ['truta', 'um peixe'], '2022/9/5': ['pombo', 'uma ave']
+    '2022/9/4': ['truta', 'um peixe'], '2022/9/5': ['pombo', 'uma ave'], '2022/9/6': ['corvo', 'uma ave']
 }
 
 data = new Date()
@@ -139,6 +139,24 @@ function validaPalavra() {
 
     let stringPalavra = palavra.join("").toLowerCase()
 
+    function existeNoObjeto(stringPalavra) {
+        contador = 0
+        for (dia in objetoPalavraDoDia) {
+            if (objetoPalavraDoDia[dia][0] == stringPalavra) {
+                contador++
+            } 
+        }
+        if (contador > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    if (existeNoObjeto(stringPalavra) == false) {
+        return
+    } 
+
     if (palavra.length < 5) {
         return
     }
@@ -148,41 +166,63 @@ function validaPalavra() {
 
     for (let tecla in teclado) {
         for (letra in palavra) {
-            console.log(palavra.join(""))
-            console.log(palavraDoDia)
-            if (palavra.join("").toLowerCase() == palavraDoDia) {
+            if (palavra[letra] == palavraCertaLista[letra]) {
                 linha1[letra].classList.add("certo")
                 linha1[letra].classList.remove("vazio")
                 if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
                     teclado[tecla].classList.add("certo")
+                    teclado[tecla].classList.remove("meio-certo")
+                    teclado[tecla].classList.remove("errado")
                     teclado[tecla].classList.remove("outros")
                 }
-            }
-            if (palavraCertaLista.includes(palavra[letra]) && letraRepete(palavra[letra]) == false &&
-            letrasVerdes.includes(palavra[letra]) == false || letraRepete(palavra[letra]) && letrasVerdes.includes(palavra[letra]) == false) {
-                linha1[letra].classList.add("certo")
+            } else if (palavraCertaLista.includes(palavra[letra]) && palavra[letra] != palavraCertaLista[letra]) {
+                linha1[letra].classList.add("meio-certo")
                 linha1[letra].classList.remove("vazio")
                 if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
-                    teclado[tecla].classList.add("certo")
+                    teclado[tecla].classList.add("meio-certo")
                     teclado[tecla].classList.remove("outros")
                 }
-                letrasVerdes.push(palavra[letra])
             } else {
                 linha1[letra].classList.add("errado")
                 linha1[letra].classList.remove("vazio")
-                if (linha1[letra].classList.contains("certo")) {
-                    if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
-                        teclado[tecla].classList.add("certo")
-                        teclado[tecla].classList.remove("outros")
-                    }
-                } else {
-                    if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
-                        teclado[tecla].classList.add("errado")
-                        teclado[tecla].classList.remove("outros")
-                    }
-                    letrasCinzas.push(palavra[letra])
+                if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
+                    teclado[tecla].classList.add("errado")
+                    teclado[tecla].classList.remove("outros")
                 }
             }
+            // if (palavra.join("").toLowerCase() == palavraDoDia) {
+            //     linha1[letra].classList.add("certo")
+            //     linha1[letra].classList.remove("vazio")
+            //     if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
+            //         teclado[tecla].classList.add("certo")
+            //         teclado[tecla].classList.remove("outros")
+            //     }
+            // }
+            // if (palavraCertaLista.includes(palavra[letra]) && letraRepete(palavra[letra]) == false &&
+            // letrasVerdes.includes(palavra[letra]) == false || letraRepete(palavra[letra]) && letrasVerdes.includes(palavra[letra]) == false) {
+            //     linha1[letra].classList.add("certo")
+            //     linha1[letra].classList.remove("vazio")
+            //     if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
+            //         teclado[tecla].classList.add("certo")
+            //         teclado[tecla].classList.remove("outros")
+            //     }
+            //     letrasVerdes.push(palavra[letra])
+            // } else {
+            //     linha1[letra].classList.add("errado")
+            //     linha1[letra].classList.remove("vazio")
+            //     if (linha1[letra].classList.contains("certo")) {
+            //         if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
+            //             teclado[tecla].classList.add("certo")
+            //             teclado[tecla].classList.remove("outros")
+            //         }
+            //     } else {
+            //         if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
+            //             teclado[tecla].classList.add("errado")
+            //             teclado[tecla].classList.remove("outros")
+            //         }
+            //         letrasCinzas.push(palavra[letra])
+            //     }
+            // }
         }
     }
 

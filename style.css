@@ -16,7 +16,7 @@ header {
 header > h1 {
     font-family: 'Roboto Slab', serif;
     font-size: 36px;
-    color: #e6e6e7;
+    color: #f0f0f1;
 }
 
 #ajuda {
@@ -99,13 +99,19 @@ header > h1 {
 }
 
 .errado {
-    background: #FDE89F;
-    color:  #333333;
-    border-color: transparent;
+    background: #E04D38;
+    color:  #e6e6e7;
+    border-color: #333333;
+}
+
+.meio-certo {
+    background: #9b8638;
+    color: #e6e6e7;
+    border-color: #333333;
 }
 
 .certo {
-    background: #E04D38;
+    background: #669900;
     color: #e6e6e7;
     border-color: #333333;
 }
