@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
+
+body {
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    font-weight: bolder;
+    overflow: hidden;
+    background-color: #858363;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+header > h1 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 36px;
+    color: #e6e6e7;
+}
+
+#ajuda {
+    font-size: 34px;
+    background: none;
+    color: #333333;
+}
+
+#dica {
+    font-size: 36px;
+    background: none;
+}
+
+.modal {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid #e6e6e7;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: #333333;
+    color: #e6e6e7;
+    width: 450px;
+    max-width: 80%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-header .close-button {
+    color: #e6e6e7;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+#modal-body {
+    padding: 10px 15px;
+}
+
+.caixa-jogo {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    font-size: 24px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1;
+    background: none;
+    background-color: #333333;
+    color:  #e6e6e7;
+    padding: 16px;
+    box-sizing: content-box;
+    margin: 3px;
+    border: 1px solid #e6e6e7;
+}
+
+#jogo {
+    font-size: 0;
+    width: 320px;
+    margin: 160px auto;
+}
+
+.errado {
+    background: #f8cd23;
+    color:  #333333;
+    border-color: transparent;
+}
+
+.certo {
+    background: #669900;
+    color: #e6e6e7;
+    border-color: #333333;
+}
+
+.vazio {
+    border: 1px solid black;
+}
+
+.outros {
+    background:  #e6e6e7;
+}
+
+#teclado {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    height: 200px; 
+    text-align: center;
+}
+
+.linha-teclado {
+    display: block;
+    margin: 3px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font-weight: bolder;
+}
+
+button:hover {
+    background-color:  #e6e6e7;
+    color: #333333;
+}
+
+.caixa-teclado {
+    font-size: 14px;
+    width: 45px;
+    height: 60px;
+    margin: 2px;
+    display: inline-block;
+    border: 1px solid #e6e6e7;
+    border-radius: 4px;
+    background-color: #333333;
+    color:  #e6e6e7;
+}
+
+.btn-especial {
+    width: 80px;
+}
+
+.gg-backspace {
+    margin-left: 28px;
+}

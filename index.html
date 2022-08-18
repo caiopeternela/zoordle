@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://css.gg/backspace.css' rel='stylesheet'>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Zoordle</title>
+</head>
+
+<body>
+    <header>
+        <button id="dica" data-modal-target="#modal">&#128161;</button>
+        <h1>🐒 Zoordle 🐒</h1>
+        <button id="ajuda">&#10067;</button>
+    </header>
+    <hr>
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <h2 class="title">Bem-vindo, jogador :)</h2>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <h3 id="modal-body"></h3>
+    </div>
+    <div id="overlay"></div>
+    <div id="jogo">
+        <div id="linha-caixa-1" class="l1">
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c2"></div>
+            <div class="caixa-jogo c3"></div>
+            <div class="caixa-jogo c4"></div>
+            <div class="caixa-jogo c5"></div>
+        </div>
+        <div id="linha-caixa-2" class="l2">
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c2"></div>
+            <div class="caixa-jogo c3"></div>
+            <div class="caixa-jogo c4"></div>
+            <div class="caixa-jogo c5"></div>
+        </div>
+        <div id="linha-caixa-3" class="l3">
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+        </div>
+        <div id="linha-caixa-4" class="l1">
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+        </div>
+        <div id="linha-caixa-5" class="l1">
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+        </div>
+        <div id="linha-caixa-6" class="l1">
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+            <div class="caixa-jogo c1"></div>
+        </div>
+    </div>
+
+    <div id="teclado">
+        <div class="linha-teclado">
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">Q</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">W</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">E</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">R</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">T</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">Y</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">U</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">I</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">O</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">P</button>
+        </div>
+        <div class="linha-teclado">
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">A</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">S</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">D</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">F</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">G</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">H</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">J</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">K</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">L</button>
+        </div>
+        <div class="linha-teclado">
+            <button onclick="validaPalavra()" class="caixa-teclado outros btn-especial">ENTER</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">Z</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">X</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">C</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">V</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">B</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">N</button>
+            <button onclick="mostraLetraNoBoard(this)" class="caixa-teclado outros">M</button>
+            <button onclick="removeLetra()" class="caixa-teclado outros btn-especial"><i class="gg-backspace"></i>
+        </div>
+    </div>
+    </div>
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/palavras.js"></script>
+</body>
+
+</html>
