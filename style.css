@@ -99,13 +99,13 @@ header > h1 {
 }
 
 .errado {
-    background: #f8cd23;
+    background: #FDE89F;
     color:  #333333;
     border-color: transparent;
 }
 
 .certo {
-    background: #669900;
+    background: #E04D38;
     color: #e6e6e7;
     border-color: #333333;
 }
