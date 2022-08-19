@@ -123,6 +123,19 @@ function removeLetra() {
 var contadorLinhas = 1
 
 function validaPalavra() {
+    function letraRepete(letra) {
+        contador = 0
+        for (elemento of palavraDoDia) {
+            if (letra.toLowerCase() == elemento) {
+                contador++
+            }
+        }
+        if (contador > 1){
+            return true
+        } else {
+            return false
+        }
+    }
 
     let palavra = []
     let palavraCertaLista = palavraDoDia.toUpperCase().split("")
@@ -133,6 +146,7 @@ function validaPalavra() {
         }
     }
 
+    var palavraCertaReversa = palavra.join("").split("").reverse().join("")
     var stringPalavra = palavra.join("").toLowerCase()
 
     function existeNoObjeto(stringPalavra) {
@@ -153,7 +167,17 @@ function validaPalavra() {
         return
     }
 
+    var letrasVerdes = []
+    var letrasBeges = []
+
     for (let tecla in teclado) {
+        for (letra in palavraCertaReversa){
+            if (letraRepete(palavraCertaReversa[letra]) == false && letrasVerdes.includes(palavraCertaReversa[letra])){
+                if (linha1[letra].classList.contains("meio-certo")) {
+                    linha1[letra].classList.remove("meio-certo")
+                }
+            }
+        }
         for (letra in palavra) {
             if (palavra[letra] == palavraCertaLista[letra]) {
                 linha1[letra].classList.add("certo")
@@ -166,14 +190,27 @@ function validaPalavra() {
                     teclado[tecla].classList.remove("errado")
                     teclado[tecla].classList.remove("outros")
                 }
+                letrasVerdes.push(palavra[letra])
             } else if (palavraCertaLista.includes(palavra[letra]) && palavra[letra] != palavraCertaLista[letra]) {
-                linha1[letra].classList.add("meio-certo")
-                linha1[letra].classList.add("animacao")
-                linha1[letra].classList.remove("vazio")
-                if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
-                    teclado[tecla].classList.add("meio-certo")
+                if (letraRepete(palavra[letra]) == false && letrasBeges.includes(palavra[letra]) == false && letrasVerdes.includes(palavra[letra]) == false) {
+                    linha1[letra].classList.add("meio-certo")
                     linha1[letra].classList.add("animacao")
-                    teclado[tecla].classList.remove("outros")
+                    linha1[letra].classList.remove("vazio")
+                    if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
+                        teclado[tecla].classList.add("meio-certo")
+                        linha1[letra].classList.add("animacao")
+                        teclado[tecla].classList.remove("outros")
+                    }
+                    letrasBeges.push(palavra[letra])
+                } else {
+                    linha1[letra].classList.add("errado")
+                    linha1[letra].classList.add("animacao")
+                    linha1[letra].classList.remove("vazio")
+                    if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
+                        teclado[tecla].classList.add("errado")
+                        linha1[letra].classList.add("animacao")
+                        teclado[tecla].classList.remove("outros")
+                    }
                 }
             } else {
                 linha1[letra].classList.add("errado")
