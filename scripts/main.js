@@ -23,7 +23,12 @@ for (dia in objetoPalavraDoDia) {
     if (dataFormatada == dia) {
         var palavraDoDia = objetoPalavraDoDia[dia][0]
         var dicaDoDia = objetoPalavraDoDia[dia][1]
-    }
+    } 
+}
+
+if (dataFormatada[5] > 8) {
+    var palavraDoDia = 'panda'
+    var dicaDoDia = 'um mamífero'
 }
 
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
