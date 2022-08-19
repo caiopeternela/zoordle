@@ -9,7 +9,8 @@ const objetoPalavraDoDia = {
     '2022/9/1': ['polvo', 'um molusco'],'2022/9/2': ['lhama', 'um mamífero'], '2022/9/3': ['tigre', 'um mamífero'],
     '2022/9/4': ['truta', 'um peixe'], '2022/9/5': ['pombo', 'uma ave'], '2022/9/6': ['corvo', 'uma ave'], 
     '2022/9/7': ['burro', 'um mamífero'], '2022/9/8': ['cabra', 'um mamífero'], '2022/9/9': ['pavao', 'uma ave'],
-    '2022/9/10': ['morsa', 'um mamífero'], '2022/9/11': ['coral', 'um cnidário'], '2022/9/12': ['cacao', 'um peixe']
+    '2022/9/10': ['morsa', 'um mamífero'], '2022/9/11': ['coral', 'um cnidário'], '2022/9/12': ['cacao', 'um peixe'],
+    '2022/9/13': ['jegue', 'um mamífero'], '2022/9/14': ['peixe', 'um grupo de animais']
 }
 
 data = new Date()
@@ -118,20 +119,6 @@ var contadorLinhas = 1
 
 function validaPalavra() {
 
-    function letraRepete(letra) {
-        let contador = 0;
-        for (let elemento of palavraDoDia) {
-            if (letra == elemento.toUpperCase()) {
-                contador++
-            }
-        }
-        if (contador > 1) {
-            return true
-        } else {
-            return false
-        }
-    }
-
     let palavra = []
     let palavraCertaLista = palavraDoDia.toUpperCase().split("")
 
@@ -141,7 +128,7 @@ function validaPalavra() {
         }
     }
 
-    let stringPalavra = palavra.join("").toLowerCase()
+    var stringPalavra = palavra.join("").toLowerCase()
 
     function existeNoObjeto(stringPalavra) {
         contador = 0
@@ -157,50 +144,58 @@ function validaPalavra() {
         }
     }
 
-    if (existeNoObjeto(stringPalavra) == false) {
-        return
-    } 
-
-    if (palavra.length < 5) {
+    if (existeNoObjeto(stringPalavra) == false || palavra.length < 5) {
         return
     }
-
-    let letrasCinzas = []
-    let letrasVerdes = []
 
     for (let tecla in teclado) {
         for (letra in palavra) {
             if (palavra[letra] == palavraCertaLista[letra]) {
                 linha1[letra].classList.add("certo")
+                linha1[letra].classList.add("animacao")
                 linha1[letra].classList.remove("vazio")
                 if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
                     teclado[tecla].classList.add("certo")
+                    linha1[letra].classList.add("animacao")
                     teclado[tecla].classList.remove("meio-certo")
                     teclado[tecla].classList.remove("errado")
                     teclado[tecla].classList.remove("outros")
                 }
             } else if (palavraCertaLista.includes(palavra[letra]) && palavra[letra] != palavraCertaLista[letra]) {
                 linha1[letra].classList.add("meio-certo")
+                linha1[letra].classList.add("animacao")
                 linha1[letra].classList.remove("vazio")
                 if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
                     teclado[tecla].classList.add("meio-certo")
+                    linha1[letra].classList.add("animacao")
                     teclado[tecla].classList.remove("outros")
                 }
             } else {
                 linha1[letra].classList.add("errado")
+                linha1[letra].classList.add("animacao")
                 linha1[letra].classList.remove("vazio")
                 if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
                     teclado[tecla].classList.add("errado")
+                    linha1[letra].classList.add("animacao")
                     teclado[tecla].classList.remove("outros")
                 }
             }
         }
     }
 
+    var segundos = 0
+
     if (palavraDoDia == stringPalavra) {
         linha1 = ""
         startConfetti();
-    } else {
+        setInterval(function(){
+            if (segundos == 10){
+                stopConfetti()
+            }
+            segundos++
+        }, 1000)
+    } 
+    else {
         if (contadorLinhas == 1) {
             linha1 = linha2
             contadorLinhas += 1

@@ -46,7 +46,7 @@ header > h1 {
     z-index: 10;
     background-color: #333333;
     color: #e6e6e7;
-    width: 450px;
+    width: 460px;
     max-width: 80%;
 }
 
@@ -147,6 +147,10 @@ button:hover {
     color:  #e6e6e7;
 }
 
+.animacao {
+    animation:rotate-horizontal-center 1.5s
+}
+
 .errado {
     background: #E04D38;
     color:  #e6e6e7;
@@ -163,6 +167,15 @@ button:hover {
     background: #669900;
     color: #e6e6e7;
     border-color: #333333;
+}
+
+@keyframes rotate-horizontal-center {
+    0%{
+        transform:rotateX(0)
+    }
+    100%{
+        transform:rotateX(-360deg);
+    }
 }
 
 .btn-especial {
