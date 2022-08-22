@@ -185,7 +185,7 @@ function validaPalavra() {
                 linha1[letra].classList.remove("vazio")
                 if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
                     teclado[tecla].classList.add("certo")
-                    linha1[letra].classList.add("animacao")
+                    teclado[tecla].classList.add("animacao")
                     teclado[tecla].classList.remove("meio-certo")
                     teclado[tecla].classList.remove("errado")
                     teclado[tecla].classList.remove("outros")
@@ -198,7 +198,7 @@ function validaPalavra() {
                     linha1[letra].classList.remove("vazio")
                     if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
                         teclado[tecla].classList.add("meio-certo")
-                        linha1[letra].classList.add("animacao")
+                        teclado[tecla].classList.add("animacao")
                         teclado[tecla].classList.remove("outros")
                     }
                     letrasBeges.push(palavra[letra])
@@ -208,7 +208,7 @@ function validaPalavra() {
                     linha1[letra].classList.remove("vazio")
                     if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
                         teclado[tecla].classList.add("errado")
-                        linha1[letra].classList.add("animacao")
+                        teclado[tecla].classList.add("animacao")
                         teclado[tecla].classList.remove("outros")
                     }
                 }
@@ -218,7 +218,7 @@ function validaPalavra() {
                 linha1[letra].classList.remove("vazio")
                 if (teclado[tecla].innerHTML == linha1[letra].innerHTML) {
                     teclado[tecla].classList.add("errado")
-                    linha1[letra].classList.add("animacao")
+                    teclado[tecla].classList.add("animacao")
                     teclado[tecla].classList.remove("outros")
                 }
             }
