@@ -1,71 +1,56 @@
 import("./confetti.js")
 
 const objetoPalavraDoDia = {
-    '2022/8/17': ['aguia', 'uma ave'], '2022/8/18': ['arara', 'uma ave'], '2022/8/19': ['bagre', 'um peixe',],
-    '2022/8/20': ['cobra', 'um réptil'],'2022/8/21': ['porco', 'um mamífero'],'2022/8/22': ['carpa', 'um peixe'],
-    '2022/8/23': ['ostra', 'um molusco'],'2022/8/24': ['lesma', 'um molusco'],'2022/8/25': ['touro', 'um mamífero'],
-    '2022/8/26': ['urubu', 'uma ave'],'2022/8/27': ['zebra', 'um mamífero'],'2022/8/28': ['vespa', 'um inseto'],
-    '2022/8/29': ['coala', 'um mamífero'],'2022/8/30': ['cupim', 'um inseto'],'2022/8/31': ['panda', 'um mamífero'],
-    '2022/9/1': ['polvo', 'um molusco'],'2022/9/2': ['lhama', 'um mamífero'], '2022/9/3': ['tigre', 'um mamífero'],
-    '2022/9/4': ['truta', 'um peixe'], '2022/9/5': ['pombo', 'uma ave'], '2022/9/6': ['corvo', 'uma ave'], 
-    '2022/9/7': ['burro', 'um mamífero'], '2022/9/8': ['cabra', 'um mamífero'], '2022/9/9': ['pavao', 'uma ave'],
-    '2022/9/10': ['morsa', 'um mamífero'], '2022/9/11': ['coral', 'um cnidário'], '2022/9/12': ['cacao', 'um peixe'],
-    '2022/9/13': ['jegue', 'um mamífero'], '2022/9/14': ['peixe', 'um grupo de animais']
+    1: ["aguia", "uma ave"], 2: ["arara", "uma ave"], 3: ["bagre", "um peixe"],
+    4: ["cobra", "um réptil"], 5: ["porco", "um mamífero"], 6: ["carpa", "um peixe"],
+    7: ["ostra", "um molusco"], 8: ["lesma", "um molusco"], 9: ["touro", "um mamífero"],
+    10: ["urubu", "uma ave"], 11: ["zebra", "um mamífero"], 12: ["vespa", "um inseto"],
+    13: ["coala", "um mamífero"], 14: ["cupim", "um inseto"], 15: ["panda", "um mamífero"],
+    16: ["polvo", "um molusco"], 17: ["lhama", "um mamífero"], 18: ["tigre", "um mamífero"],
+    19: ["truta", "um peixe"], 20: ["pombo", "uma ave"], 21: ["corvo", "uma ave"], 
+    22: ["burro", "um mamífero"], 23: ["cabra", "um mamífero"], 24: ["pavao", "uma ave"],
+    25: ["morsa", "um mamífero"], 26: ["coral", "um cnidário"], 27: ["cacao", "um peixe"],
+    28: ["jegue", "um mamífero"], 29: ["peixe", "um grupo de animais"]
 }
 
-data = new Date()
-ano = data.getFullYear()
-mes = data.getMonth()+1
-dia = data.getDate()
-dataFormatada = `${ano}/${mes}/${dia}`
+const palavraDoDia = "bagre"
+const dicaDoDia = "um peixe"
 
-for (dia in objetoPalavraDoDia) {
-    if (dataFormatada == dia) {
-        var palavraDoDia = objetoPalavraDoDia[dia][0]
-        var dicaDoDia = objetoPalavraDoDia[dia][1]
-    } 
-}
-
-if (dataFormatada[5] > 8) {
-    var palavraDoDia = 'panda'
-    var dicaDoDia = 'um mamífero'
-}
-
-const openModalButtons = document.querySelectorAll('[data-modal-target]')
-const closeModalButtons = document.querySelectorAll('[data-close-button]')
-const overlay = document.getElementById('overlay')
+const openModalButtons = document.querySelectorAll("[data-modal-target]")
+const closeModalButtons = document.querySelectorAll("[data-close-button]")
+const overlay = document.getElementById("overlay")
 
 openModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
     const modal = document.querySelector(button.dataset.modalTarget)
     openModal(modal)
     })
 })
 
-overlay.addEventListener('click', () => {
-    const modals = document.querySelectorAll('.modal.active')
+overlay.addEventListener("click", () => {
+    const modals = document.querySelectorAll(".modal.active")
     modals.forEach(modal => {
     closeModal(modal)
     })
 })
 
 closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-    const modal = button.closest('.modal')
+    button.addEventListener("click", () => {
+    const modal = button.closest(".modal")
     closeModal(modal)
     })
 })
 
 function openModal(modal) {
     if (modal == null) return
-    modal.classList.add('active')
-    overlay.classList.add('active')
+    modal.classList.add("active")
+    overlay.classList.add("active")
 }
 
 function closeModal(modal) {
     if (modal == null) return
-    modal.classList.remove('active')
-    overlay.classList.remove('active')
+    modal.classList.remove("active")
+    overlay.classList.remove("active")
 }
 
 document.getElementById("modal-body").innerHTML = `Dica do dia: o animal escolhido é ${dicaDoDia}!`
@@ -78,11 +63,11 @@ let linha5 = document.getElementById("linha-caixa-5").children
 let linha6 = document.getElementById("linha-caixa-6").children
 let teclado = document.getElementsByTagName("button")
 
-document.addEventListener('keydown', function (e) {
+document.addEventListener("keydown", function (e) {
     if (e.key.toString().toUpperCase().charCodeAt(0) >= 65 && e.key.toString().toUpperCase().charCodeAt(0) <= 90 && e.key.toString().length == 1) {
         letraDigitadaLocal = e.key.toString().toUpperCase();
         for (let i = 0; i <= 4; i++) {
-            if (linha1[i].innerHTML == '') {
+            if (linha1[i].innerHTML == "") {
                 linha1[i].innerHTML = letraDigitadaLocal
                 linha1[i].classList.add("vazio")
                 break
@@ -99,7 +84,7 @@ function mostraLetraNoBoard(tagLetra) {
     letraDigitada = tagLetra.innerHTML
 
     for (let i = 0; i <= 4; i++) {
-        if (linha1[i].innerHTML == '') {
+        if (linha1[i].innerHTML == "") {
             linha1[i].innerHTML = letraDigitada
             linha1[i].classList.add("vazio")
             break
@@ -109,8 +94,8 @@ function mostraLetraNoBoard(tagLetra) {
 
 function removeLetra() {
     for (let i = 4; i >= 0; i--) {
-        if (linha1[i].innerHTML != '') {
-            linha1[i].innerHTML = ''
+        if (linha1[i].innerHTML != "") {
+            linha1[i].innerHTML = ""
             linha1[i].classList.remove("vazio")
             linha1[i].classList.remove("certo")
             linha1[i].classList.remove("meio-certo")
@@ -141,7 +126,7 @@ function validaPalavra() {
     let palavraCertaLista = palavraDoDia.toUpperCase().split("")
 
     for (let i = 0; i <= 4; i++) {
-        if (linha1[i].innerHTML != '') {
+        if (linha1[i].innerHTML != "") {
             palavra.push(linha1[i].innerHTML)
         }
     }
